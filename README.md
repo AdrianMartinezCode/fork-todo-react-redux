@@ -1,2 +1,1 @@
-# fork-todo-react-redux
-Created with CodeSandbox
+# Typesafe-Actions Reference Project
