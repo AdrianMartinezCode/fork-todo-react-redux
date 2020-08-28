@@ -3,4 +3,9 @@ declare module 'MyModels' {
     id: string;
     title: string;
   };
+
+  export type Currency = {
+    name: string;
+    value: number;
+  };
 }

@@ -2,7 +2,12 @@ import { Todo } from 'MyModels';
 import { combineReducers } from 'redux';
 import { createReducer } from 'typesafe-actions';
 
-import { loadTodosAsync, addTodo, removeTodo } from './actions';
+import {
+  loadTodosAsync,
+  addTodo,
+  removeTodo,
+  loadAllCurrenciesAsync,
+} from './actions';
 
 export const isLoadingTodos = createReducer(false as boolean)
   .handleAction([loadTodosAsync.request], (state, action) => true)
@@ -20,12 +25,18 @@ export const todos = createReducer([
   .handleAction(loadTodosAsync.success, (state, action) => action.payload)
   .handleAction(addTodo, (state, action) => [...state, action.payload])
   .handleAction(removeTodo, (state, action) =>
-    state.filter(i => i.id !== action.payload)
+    state.filter((i) => i.id !== action.payload)
   );
+
+export const currencies = createReducer([]).handleAction(
+  loadAllCurrenciesAsync.success,
+  (state, action) => action.payload
+);
 
 const todosReducer = combineReducers({
   isLoadingTodos,
   todos,
+  currencies,
 });
 
 export default todosReducer;

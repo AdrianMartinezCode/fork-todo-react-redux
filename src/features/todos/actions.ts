@@ -1,4 +1,4 @@
-import { Todo } from 'MyModels';
+import { Todo, Currency } from 'MyModels';
 import cuid from 'cuid';
 import { createAction, createAsyncAction } from 'typesafe-actions';
 
@@ -20,3 +20,9 @@ export const saveTodosAsync = createAsyncAction(
   'SAVE_TODOS_SUCCESS',
   'SAVE_TODOS_FAILURE'
 )<undefined, undefined, string>();
+
+export const loadAllCurrenciesAsync = createAsyncAction(
+  'LOAD_ALL_CURRENCIES_REQUEST',
+  'LOAD_ALL_CURRENCIES_SUCCESS',
+  'LOAD_ALL_CURRENCIES_FAILURE'
+)<undefined, Currency[], Error>();
